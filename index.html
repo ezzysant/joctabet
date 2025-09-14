@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculadora de Surebet</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="fucionalidades.js"></script>
+</head>
+<body>
+
+  <main>
+      <h1>Calculadora de Surebet</h1>
+      <div class="info-grid" style="--grid-cols: 5;">
+            <label for="surebet-entrada">ENTRADA</label>
+            <label for="surebet-procedimento">PROCEDIMENTO</label>
+            <label for="surebet-data">DATA</label>
+            <label for="surebet-backs">BACKS</label>
+            <label></label>
+
+            <input type="number" id="surebet-entrada" placeholder="R$ 0,00">
+            <input type="text" id="surebet-procedimento" placeholder="Ex: Rollover">
+            <input type="date" id="surebet-data">
+            <select id="surebet-backs">
+                <option value="1">1</option>
+                <option value="2" selected>2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+            </select>
+            <button type="button" class="toggle-btn lay-toggle-btn" onclick="visibleAreaLay()">- LAY</button>
+        </div>
+
+        <div class="cont-status">
+            <div class="botoes">
+                <button class="calcular">Calcular</button>
+                <button class="salvar">Salvar</button>
+                <button class="resetar">Resetar</button>
+            </div>
+            <div class="resultados">
+                    <div>
+                    TOTAL APOSTADO
+                    <div class="valor">R$ 0,00</div>
+                </div>
+                <div>
+                    LUCRO
+                    <div class="valor">R$ 0,00</div>
+                </div>
+                <div>
+                    % DE LUCRO
+                    <div class="valor">0.00%</div>
+                </div>
+            </div>
+        </div>
+
+      <table>
+        <tbody>
+            <tr class="table-header">
+              <th>ENTRADAS</th>
+              <th>COMISSÃO</th>
+              <th>ODD</th>
+              <th>APOSTAR</th>
+              <th>LUCRO BRUTO</th>
+              <th>LUCRO FINAL</th>
+            </tr>
+            <tr>
+                <td>Back 1</td>
+                <td><input type="number" value="0.00">%</td>
+                <td><input type="number" value="0.00"></td>
+                <td>R$ 0,00</td>
+                <td>R$ 0,00</td>
+                <td>R$ 0,00</td>
+            </tr>
+            <tr>
+                <td>Back 2</td>
+                <td><input type="number" value="0.00">%</td>
+                <td><input type="number" value="0.00"></td>
+                <td>R$ 0,00</td>
+                <td>R$ 0,00</td>
+                <td>R$ 0,00</td>
+            </tr>
+            <tr>
+                <td>Back 3</td>
+                <td><input type="number" value="0.00">%</td>
+                <td><input type="number" value="0.00"></td>
+                <td>R$ 0,00</td>
+                <td>R$ 0,00</td>
+                <td>R$ 0,00</td>
+            </tr>
+            <tr>
+                <td>Back 4</td>
+                <td><input type="number" value="0.00">%</td>
+                <td><input type="number" value="0.00"></td>
+                <td>R$ 0,00</td>
+                <td>R$ 0,00</td>
+                <td>R$ 0,00</td>
+            </tr>
+            <tr>
+                <td>Back 5</td>
+                <td><input type="number" value="0.00">%</td>
+                <td><input type="number" value="0.00"></td>
+                <td>R$ 0,00</td>
+                <td>R$ 0,00</td>
+                <td>R$ 0,00</td>
+            </tr>
+            <tr>
+                <td>Back 6</td>
+                <td><input type="number" value="0.00">%</td>
+                <td><input type="number" value="0.00"></td>
+                <td>R$ 0,00</td>
+                <td>R$ 0,00</td>
+                <td>R$ 0,00</td>
+            </tr>
+            <tr>
+                <td>Back 7</td>
+                <td><input type="number" value="0.00">%</td>
+                <td><input type="number" value="0.00"></td>
+                <td>R$ 0,00</td>
+                <td>R$ 0,00</td>
+                <td>R$ 0,00</td>
+            </tr>
+            <tr class="lay-row">
+                <td>Lay</td>
+                <td><input type="number" value="0.00">%</td>
+                <td><input type="number" value="0.00"></td>
+                <td>R$ 0,00</td>
+                <td>R$ 0,00</td>
+                <td>R$ 0,00</td>
+            </tr>
+        </tbody>
+      </table>
+      <div class="stake-area lay-box">
+        <div>
+          <div>STAKE LAY</div>
+          <div class="atibut-lay">-</div>
+        </div>
+        <div>
+          <div>RESPONSABILIDADE</div>
+          <div class="atibut-lay">-</div>
+        </div>
+      </div>
+  </main>
+
+  <footer>
+    <div class="link-redes"> Siga <a href="https://github.com/ezzysant" target="_blank">Ezzy Sant</a></div>
+  </footer>
+</body>
+</html>
