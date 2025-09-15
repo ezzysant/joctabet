@@ -17,7 +17,6 @@
 
     main{
         width: 90%;
-        min-width: 500px;
         max-width: 1500px;
         height:100%;
     }
@@ -72,8 +71,10 @@
     }
 
     th, td {
+
       padding: 10px;
       text-align: center;
+      white-space: nowrap;
     }
 
     th {
@@ -108,6 +109,7 @@
     }
 
     tr td input{
+
         text-align: center;
         color: white;
         background-color: #171722;
@@ -138,6 +140,7 @@
     .cont-status{
         display: flex;
         justify-content: space-between;
+        gap:20px;
     }
 
     .botoes {

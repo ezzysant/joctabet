@@ -17,3 +17,11 @@ function visibleAreaLay(){
         lay_row.style.display = "table-row"
     }
 }
+
+function Calculate(){
+    let main_value = document.querySelector('.surebet-entrada');
+    let comission = document.querySelectorAll('.comission');
+    let odd = document.querySelectorAll('.odd');
+    let apostar = document.querySelectorAll('.apostar');
+
+}
