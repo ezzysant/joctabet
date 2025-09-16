@@ -1,0 +1,6 @@
+aposta * odd = lucro bruto
+lucro bruto / odd de baixo = aposta de baixo
+
+---
+
+((100*c5 - 100) + (100 * c5 - 100) * b5 + 100)/100

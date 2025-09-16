@@ -119,6 +119,10 @@
         margin-left: 5px;
     }
 
+    tr.line-back{
+      display: none;
+    }
+
     .stake-area {
       margin: 20px 0;
       display: flex;
@@ -135,6 +139,10 @@
     .stake-area .atibut-lay{
         width:200px;
         padding: 10px;
+    }
+
+    .lay-visible{
+      display:none;
     }
 
     .cont-status{
