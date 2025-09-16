@@ -148,10 +148,6 @@
       padding: 10px;
     }
 
-    .lay-visible {
-      display: none;
-    }
-
     .cont-status {
       display: flex;
       justify-content: space-between;
