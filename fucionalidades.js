@@ -42,10 +42,12 @@ function Calculate() {
     let odd = document.querySelectorAll('.odd');
     let apostar = document.querySelectorAll('.apostar');
     let lucro_bruto = document.querySelectorAll('.lucro-bruto');
+    let lucro_final = [];
     let total_apostado = document.getElementById('total-apostado');
+    let lucro = document.getElementById('lucro');
     let stake_value = document.getElementById('stake-value');
     let resp_value = document.getElementById('resp-value');
-
+    
     //Sei lá, acho que fiz bruxaria pra funcionar
     for (let i = 0; i < 7; i++) {
         let comission_num = Number(comission[i].value) / 100;
@@ -103,9 +105,8 @@ function Calculate() {
     }
 
     //Total Apostado
-    for(let i = 0, total = 0; i <= 7;i++){
-        window.alert(total)
-        if(i>=7){
+    for(let i = 0, total = 0; i <= 8;i++){
+        if(i>=8){
             total_apostado.innerHTML = total.toFixed(2);
             break;
         }
@@ -113,6 +114,17 @@ function Calculate() {
         let new_num = Number(apostar[i].innerHTML.replaceAll(',','.'));
         total += new_num;
     }
+
+    //Lucro Final
+    for(let i = 0; i <= 7; i++){
+        let lucro_bruto_num = Number(lucro_bruto[i].innerHTML.replaceAll(',','.'));
+        let total_apostado_num = Number(total_apostado.innerHTML.replaceAll(',','.'));
+        lucro_final[i] = (lucro_bruto_num - total_apostado_num).toFixed(2);
+        
+    }
+
+    lucro.innerHTML = Math.min(...lucro_final);
+
 
 }
 
