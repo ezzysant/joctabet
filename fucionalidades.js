@@ -1,4 +1,4 @@
-var visible_lay = false;
+var visible_lay = true;
 
 //Função para visualisar opções Lay
 function visibleAreaLay() {
@@ -42,9 +42,10 @@ function Calculate() {
     let odd = document.querySelectorAll('.odd');
     let apostar = document.querySelectorAll('.apostar');
     let lucro_bruto = document.querySelectorAll('.lucro-bruto');
-    let lucro_final = [];
+    let lucro_final = document.querySelectorAll('.lucro-final');
     let total_apostado = document.getElementById('total-apostado');
     let lucro = document.getElementById('lucro');
+    let porcent_lucro = document.getElementById('porcent-lucro');
     let stake_value = document.getElementById('stake-value');
     let resp_value = document.getElementById('resp-value');
     
@@ -111,20 +112,33 @@ function Calculate() {
             break;
         }
 
-        let new_num = Number(apostar[i].innerHTML.replaceAll(',','.'));
+        let new_num = Number(apostar[i].innerHTML.replace(',','.'));
         total += new_num;
     }
 
     //Lucro Final
     for(let i = 0; i <= 7; i++){
-        let lucro_bruto_num = Number(lucro_bruto[i].innerHTML.replaceAll(',','.'));
-        let total_apostado_num = Number(total_apostado.innerHTML.replaceAll(',','.'));
-        lucro_final[i] = (lucro_bruto_num - total_apostado_num).toFixed(2);
+        let lucro_bruto_num = Number(lucro_bruto[i].innerHTML.replace(',','.'));
+        let total_apostado_num = Number(total_apostado.innerHTML.replace(',','.'));
+        lucro_final[i].innerHTML = (lucro_bruto_num - total_apostado_num).toFixed(2);
         
     }
 
-    lucro.innerHTML = Math.min(...lucro_final);
+    //Lucro
+    for(let i = 0, menor = 0; i<=8;i++){
+        if(i>= 8){
+            lucro.innerHTML = menor;
+            break;
+        }
 
+        let lucro_final_num = Number(lucro_final[i].innerHTML.replace(',','.'));
+        if(menor > lucro_final_num){
+            menor = lucro_final_num;
+        }
+    }
+
+    //Porcentagem de lucro
+    porcent_lucro.innerHTML = (Number(lucro_final[0].innerHTML.replace(',','.'))/Number(total_apostado.innerHTML.replace(',','.')) * 100).toFixed(2)
 
 }
 

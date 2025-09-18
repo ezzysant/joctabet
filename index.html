@@ -19,17 +19,17 @@
       <label for="surebet-backs">BACKS</label>
       <label></label>
 
-      <input type="number" id="surebet-entrada" placeholder="R$ 0,00" value="100">
+      <input type="number" id="surebet-entrada" placeholder="R$ 0,00">
       <input type="text" id="surebet-procedimento" placeholder="Ex: Rollover">
       <input type="date" id="surebet-data">
       <select id="surebet-backs" onchange="amountRow()">
         <option value="1">1</option>
-        <option value="2">2</option>
+        <option value="2" selected>2</option>
         <option value="3">3</option>
         <option value="4">4</option>
         <option value="5">5</option>
         <option value="6">6</option>
-        <option value="7" selected>7</option>
+        <option value="7">7</option>
       </select>
       <button type="button" class="toggle-btn lay-toggle-btn" onclick="visibleAreaLay()">+ LAY</button>
     </div>
@@ -47,7 +47,7 @@
         <tr class="line-back">
           <td>Back 1</td>
           <td><input type="number" value="0.00" class="comission">%</td>
-          <td><input type="number" value="3.6" class="odd"></td>
+          <td><input type="number" value="0.00" class="odd"></td>
           <td>R$ <span class="apostar">0,00</span></td>
           <td>R$ <span class="lucro-bruto">0,00</span></td>
           <td>R$ <span class="lucro-final">0,00</span></td>
@@ -55,7 +55,7 @@
         <tr class="line-back">
           <td>Back 2</td>
           <td><input type="number" value="0.00" class="comission">%</td>
-          <td><input type="number" value="3.9" class="odd"></td>
+          <td><input type="number" value="0.00" class="odd"></td>
           <td>R$ <span class="apostar">0,00</span></td>
           <td>R$ <span class="lucro-bruto">0,00</span></td>
           <td>R$ <span class="lucro-final">0,00</span></td>
