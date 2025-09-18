@@ -11,133 +11,137 @@
 <body onload="startSiteWeb()">
 
   <main>
-    <h1>Calculadora de Surebet</h1>
-    <div class="info-grid" style="--grid-cols: 5;">
-      <label for="surebet-entrada">ENTRADA</label>
-      <label for="surebet-procedimento">PROCEDIMENTO</label>
-      <label for="surebet-data">DATA</label>
-      <label for="surebet-backs">BACKS</label>
-      <label></label>
-
-      <input type="number" id="surebet-entrada" placeholder="R$ 0,00">
-      <input type="text" id="surebet-procedimento" placeholder="Ex: Rollover">
-      <input type="date" id="surebet-data">
-      <select id="surebet-backs" onchange="amountRow()">
-        <option value="1">1</option>
-        <option value="2" selected>2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-      </select>
-      <button type="button" class="toggle-btn lay-toggle-btn" onclick="visibleAreaLay()">+ LAY</button>
-    </div>
-
-    <table>
-      <tbody>
-        <tr class="table-header">
-          <th>ENTRADAS</th>
-          <th>COMISSÃO</th>
-          <th>ODD</th>
-          <th>APOSTAR</th>
-          <th>LUCRO BRUTO</th>
-          <th>LUCRO FINAL</th>
-        </tr>
-        <tr class="line-back">
-          <td>Back 1</td>
-          <td><input type="number" value="0.00" class="comission">%</td>
-          <td><input type="number" value="0.00" class="odd"></td>
-          <td>R$ <span class="apostar">0,00</span></td>
-          <td>R$ <span class="lucro-bruto">0,00</span></td>
-          <td>R$ <span class="lucro-final">0,00</span></td>
-        </tr>
-        <tr class="line-back">
-          <td>Back 2</td>
-          <td><input type="number" value="0.00" class="comission">%</td>
-          <td><input type="number" value="0.00" class="odd"></td>
-          <td>R$ <span class="apostar">0,00</span></td>
-          <td>R$ <span class="lucro-bruto">0,00</span></td>
-          <td>R$ <span class="lucro-final">0,00</span></td>
-        </tr>
-        <tr class="line-back">
-          <td>Back 3</td>
-          <td><input type="number" value="0.00" class="comission">%</td>
-          <td><input type="number" value="0.00" class="odd"></td>
-          <td>R$ <span class="apostar">0,00</span></td>
-          <td>R$ <span class="lucro-bruto">0,00</span></td>
-          <td>R$ <span class="lucro-final">0,00</span></td>
-        </tr>
-        <tr class="line-back">
-          <td>Back 4</td>
-          <td><input type="number" value="0.00" class="comission">%</td>
-          <td><input type="number" value="0.00" class="odd"></td>
-          <td>R$ <span class="apostar">0,00</span></td>
-          <td>R$ <span class="lucro-bruto">0,00</span></td>
-          <td>R$ <span class="lucro-final">0,00</span></td>
-        </tr>
-        <tr class="line-back">
-          <td>Back 5</td>
-          <td><input type="number" value="0.00" class="comission">%</td>
-          <td><input type="number" value="0.00" class="odd"></td>
-          <td>R$ <span class="apostar">0,00</span></td>
-          <td>R$ <span class="lucro-bruto">0,00</span></td>
-          <td>R$ <span class="lucro-final">0,00</span></td>
-        </tr>
-        <tr class="line-back">
-          <td>Back 6</td>
-          <td><input type="number" value="0.00" class="comission">%</td>
-          <td><input type="number" value="0.00" class="odd"></td>
-          <td>R$ <span class="apostar">0,00</span></td>
-          <td>R$ <span class="lucro-bruto">0,00</span></td>
-          <td>R$ <span class="lucro-final">0,00</span></td>
-        </tr>
-        <tr class="line-back">
-          <td>Back 7</td>
-          <td><input type="number" value="0.00" class="comission">%</td>
-          <td><input type="number" value="0.00" class="odd"></td>
-          <td>R$ <span class="apostar">0,00</span></td>
-          <td>R$ <span class="lucro-bruto">0,00</span></td>
-          <td>R$ <span class="lucro-final">0,00</span></td>
-        </tr>
-        <tr class="lay-row line-back">
-          <td>Lay</td>
-          <td><input type="number" value="0.00" class="comission">%</td>
-          <td><input type="number" value="0.00" class="odd"></td>
-          <td>R$ <span class="apostar">0,00</span></td>
-          <td>R$ <span class="lucro-bruto">0,00</span></td>
-          <td>R$ <span class="lucro-final">0,00</span></td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="stake-area" style="display: none;">
-      <div>
-        <div>STAKE LAY</div>
-        <div class="atibut-lay" id="stake-value">-</div>
+    <div class="table-main">
+      <h1>Calculadora de Surebet</h1>
+      <div class="info-grid" style="--grid-cols: 6;">
+        <label for="surebet-entrada">ENTRADA</label>
+        <label for="surebet-procedimento">PROCEDIMENTO</label>
+        <label for="surebet-data">DATA</label>
+        <label for="surebet-backs">BACKS</label>
+        <label for="surebet-arred">ARRED</label>
+        <label></label>
+        <input type="number" id="surebet-entrada" placeholder="R$ 0,00">
+        <input type="text" id="surebet-procedimento" placeholder="Ex: Rollover">
+        <input type="date" id="surebet-data">
+        <select id="surebet-backs" onchange="amountRow()">
+          <option value="1">1</option>
+          <option value="2" selected>2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+        </select>
+        <select id="surebet-arred"">
+          <option value="1">1</option>
+        </select>
+        <button type="button" class="toggle-btn lay-toggle-btn" onclick="visibleAreaLay()">+ LAY</button>
       </div>
-      <div>
-        <div>RESPONSABILIDADE</div>
-        <div class="atibut-lay" id="resp-value">-</div>
-      </div>
-    </div>
-<div class="cont-status">
-      <div class="botoes">
-        <button class="calcular" onclick="Calculate()">Calcular</button>
-        <button class="salvar">Salvar</button>
-        <button class="resetar">Resetar</button>
-      </div>
-      <div class="resultados">
+      <table>
+        <tbody>
+          <tr class="table-header">
+            <th>ENTRADAS</th>
+            <th>COMISSÃO</th>
+            <th>ODD</th>
+            <th>APOSTAR</th>
+            <th>LUCRO BRUTO</th>
+            <th>LUCRO FINAL</th>
+          </tr>
+          <tr class="line-back">
+            <td>Back 1</td>
+            <td><input type="number" class="comission" placeholder="0,00">%</td>
+            <td><input type="number" class="odd" placeholder="0,00"></td>
+            <td>R$ <span class="apostar">-</span></td>
+            <td>R$ <span class="lucro-bruto">-</span></td>
+            <td>R$ <span class="lucro-final">-</span></td>
+          </tr>
+          <tr class="line-back">
+            <td>Back 2</td>
+            <td><input type="number" class="comission" placeholder="0,00">%</td>
+            <td><input type="number" class="odd" placeholder="0,00"></td>
+            <td>R$ <span class="apostar">-</span></td>
+            <td>R$ <span class="lucro-bruto">-</span></td>
+            <td>R$ <span class="lucro-final">-</span></td>
+          </tr>
+          <tr class="line-back">
+            <td>Back 3</td>
+            <td><input type="number" class="comission" placeholder="0,00">%</td>
+            <td><input type="number" class="odd" placeholder="0,00"></td>
+            <td>R$ <span class="apostar">-</span></td>
+            <td>R$ <span class="lucro-bruto">-</span></td>
+            <td>R$ <span class="lucro-final">-</span></td>
+          </tr>
+          <tr class="line-back">
+            <td>Back 4</td>
+            <td><input type="number" class="comission" placeholder="0,00">%</td>
+            <td><input type="number" class="odd" placeholder="0,00"></td>
+            <td>R$ <span class="apostar">-</span></td>
+            <td>R$ <span class="lucro-bruto">-</span></td>
+            <td>R$ <span class="lucro-final">-</span></td>
+          </tr>
+          <tr class="line-back">
+            <td>Back 5</td>
+            <td><input type="number" class="comission" placeholder="0,00">%</td>
+            <td><input type="number" class="odd" placeholder="0,00"></td>
+            <td>R$ <span class="apostar">-</span></td>
+            <td>R$ <span class="lucro-bruto">-</span></td>
+            <td>R$ <span class="lucro-final">-</span></td>
+          </tr>
+          <tr class="line-back">
+            <td>Back 6</td>
+            <td><input type="number" class="comission" placeholder="0,00">%</td>
+            <td><input type="number" class="odd" placeholder="0,00"></td>
+            <td>R$ <span class="apostar">-</span></td>
+            <td>R$ <span class="lucro-bruto">-</span></td>
+            <td>R$ <span class="lucro-final">-</span></td>
+          </tr>
+          <tr class="line-back">
+            <td>Back 7</td>
+            <td><input type="number" class="comission" placeholder="0,00">%</td>
+            <td><input type="number" class="odd" placeholder="0,00"></td>
+            <td>R$ <span class="apostar">-</span></td>
+            <td>R$ <span class="lucro-bruto">-</span></td>
+            <td>R$ <span class="lucro-final">-</span></td>
+          </tr>
+          <tr class="lay-row line-back">
+            <td>Lay</td>
+            <td><input type="number" class="comission" placeholder="0,00">%</td>
+            <td><input type="number" class="odd" placeholder="0,00"></td>
+            <td>R$ <span class="apostar">-</span></td>
+            <td>R$ <span class="lucro-bruto">-</span></td>
+            <td>R$ <span class="lucro-final">-</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="stake-area" style="display: none;">
         <div>
-          TOTAL APOSTADO
-          <div class="valor">R$ <span id="total-apostado">0,00</span></div>
+          <div>STAKE LAY</div>
+          <div class="atibut-lay" id="stake-value">-</div>
         </div>
         <div>
-          LUCRO
-          <div class="valor">R$ <span id="lucro">0,00</span></div>
+          <div>RESPONSABILIDADE</div>
+          <div class="atibut-lay" id="resp-value">-</div>
         </div>
-        <div>
-          % DE LUCRO
-          <div class="valor"><span id="porcent-lucro">0.00</span>%</div>
+      </div>
+      <div class="cont-status">
+        <div class="botoes">
+          <button class="calcular" onclick="Calculate()">Calcular</button>
+          <button class="salvar">Salvar</button>
+          <button class="resetar">Resetar</button>
+        </div>
+        <div class="resultados">
+          <div>
+            TOTAL APOSTADO
+            <div class="valor">R$ <span id="total-apostado">0,00</span></div>
+          </div>
+          <div>
+            LUCRO
+            <div class="valor">R$ <span id="lucro">0,00</span></div>
+          </div>
+          <div>
+            % DE LUCRO
+            <div class="valor"><span id="porcent-lucro">0.00</span>%</div>
+          </div>
         </div>
       </div>
     </div>
