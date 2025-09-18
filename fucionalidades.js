@@ -25,7 +25,7 @@ function amountRow() {
     let _option = document.getElementById('surebet-backs')
 
     //Visualizando todas as row
-    for (let i = 0; i < 7; i++) {
+    for (let i = 0; i <= 6; i++) {
         line_back[i].style.display = 'table-row'
     }
 
@@ -100,6 +100,18 @@ function Calculate() {
 
         }
     
+    }
+
+    //Total Apostado
+    for(let i = 0, total = 0; i <= 7;i++){
+        window.alert(total)
+        if(i>=7){
+            total_apostado.innerHTML = total.toFixed(2);
+            break;
+        }
+
+        let new_num = Number(apostar[i].innerHTML.replaceAll(',','.'));
+        total += new_num;
     }
 
 }
