@@ -1,4 +1,4 @@
-var visible_lay = true;
+var visible_lay = false;
 
 //Função para visualisar opções Lay
 function visibleAreaLay() {
@@ -63,20 +63,18 @@ function Calculate() {
         let form_calc = ((100 * odd_num - 100) + (100 * odd_num - 100) * comission_num + 100) / 100;
 
         if (i === 0) {
-            apostar[0].innerHTML = (entrada_value).toFixed(2);
-            lucro_bruto[0].innerHTML = Math.round(Number(apostar[0].innerHTML) * form_calc).toFixed(2);
+            apostar[0].innerHTML = String(Number(entrada_value).toFixed(2)).replace('.',',');
+            lucro_bruto[0].innerHTML = String((Number(entrada_value) * form_calc).toFixed(2)).replace('.',',');
+            continue;
 
-        } else if (!Number.isNaN(Number(lucro_bruto[0].innerHTML.replace(',', '.')))) {
-
-            apostar[i].innerHTML = (Number(lucro_bruto[0].innerHTML) / form_calc).toFixed(2);
-            lucro_bruto[i].innerHTML = Math.round(Number(apostar[i].innerHTML) * form_calc).toFixed(2);
+            
         }
 
-        
-        
-
+        apostar[i].innerHTML = String(Number(Number(lucro_bruto[0].innerHTML.replace(',','.')) / form_calc).toFixed(2)).replace('.',',');
+        lucro_bruto[i].innerHTML = String(Math.round((apostar[i].innerHTML.replace(',','.')) * form_calc).toFixed(2)).replace('.',',');
+    
     }
-    /*
+    
     //Area LAY
     if (visible_lay) {
         //Numero do indice da linha LAY
@@ -87,7 +85,7 @@ function Calculate() {
         let odd_num = Number(odd[index_row].value);
 
         //Se a odd é igual a 0 nao calcule nada
-        if (odd_num === 0 || odd_num === undefined) {
+        if (odd[index_row].value == '0' || odd[index_row].value == '' || lucro_bruto[0].innerHTML == '-') {
             //Zerando areas caso o odd da linha seja 0 (Para nao dar erro)
             apostar[index_row].innerHTML = '-';
             lucro_bruto[index_row].innerHTML = '-';
@@ -95,60 +93,70 @@ function Calculate() {
             //Resetando STAKE LAY e RESPONSABILIDADE
             stake_value.innerHTML = '-';
             resp_value.innerHTML = '-';
-        } else {
-
+        }else {
             //Formula
             let form_calc = ((100 * (odd_num / (odd_num - 1)) - 100) + (100 * (odd_num / (odd_num - 1)) - 100) * comission_num + 100) / 100;
 
             //Equação para definir aposta da linha
-            apostar[index_row].innerHTML = (Number(lucro_bruto[0].innerHTML) / form_calc).toFixed(2);
+            apostar[index_row].innerHTML = String((Number(lucro_bruto[0].innerHTML.replace(',','.')) / form_calc).toFixed(2)).replace('.',',');
             //Equação para definir lucro bruto da linha
-            lucro_bruto[index_row].innerHTML = Math.round(Number(apostar[index_row].innerHTML) * form_calc).toFixed(2);
+            lucro_bruto[index_row].innerHTML = String(Math.round( Number(apostar[index_row].innerHTML.replace(',','.')) * form_calc).toFixed(2) ).replace('.',',');
 
             //Definindo Stake Lay
-            stake_value.innerHTML = `R$ ${Number(((odd_num / (odd_num - 1)) - 1) * Number(apostar[index_row].innerHTML)).toFixed(2)}`;
+            stake_value.innerHTML = `R$ ${String(Number(((odd_num / (odd_num - 1)) - 1) * Number(apostar[index_row].innerHTML.replace(',','.'))).toFixed(2)).replace('.',',')}`;
             //Definindo Respondabilidade
-            resp_value.innerHTML = `R$ ${Number(apostar[index_row].innerHTML).toFixed(2)}`;
+            resp_value.innerHTML = `R$ ${String(Number(apostar[index_row].innerHTML.replace(',','.')).toFixed(2)).replace('.',',')}`;
 
         }
 
     }
+
 
     //Total Apostado
     for (let i = 0, total = 0; i <= 8; i++) {
         if (i >= 8) {
-            total_apostado.innerHTML = total.toFixed(2);
+            total_apostado.innerHTML = String(total.toFixed(2).replace('.',','));
             break;
         }
 
-        let new_num = Number(apostar[i].innerHTML.replace(',', '.'));
-        total += new_num;
+        let apostar_num = Number(apostar[i].innerHTML.replace(',','.'));
+
+        if(!Number.isNaN(apostar_num)){
+            let new_num = apostar_num;
+            total += new_num;
+        }
     }
+    
 
     //Lucro Final
     for (let i = 0; i <= 7; i++) {
         let lucro_bruto_num = Number(lucro_bruto[i].innerHTML.replace(',', '.'));
         let total_apostado_num = Number(total_apostado.innerHTML.replace(',', '.'));
-        lucro_final[i].innerHTML = (lucro_bruto_num - total_apostado_num).toFixed(2);
+
+        if(!Number.isNaN(lucro_bruto_num) &&  !Number.isNaN(total_apostado_num)){
+            lucro_final[i].innerHTML = String((lucro_bruto_num - total_apostado_num).toFixed(2)).replace('.',',');
+        }
 
     }
+    
+     
 
     //Lucro
     for (let i = 0, menor = 0; i <= 8; i++) {
         if (i >= 8) {
-            lucro.innerHTML = menor;
+            lucro.innerHTML = String(menor.toFixed(2)).replace('.',',');
             break;
         }
 
         let lucro_final_num = Number(lucro_final[i].innerHTML.replace(',', '.'));
-        if (menor > lucro_final_num) {
+        if (menor > lucro_final_num && !Number.isNaN(lucro_final_num)) {
             menor = lucro_final_num;
         }
     }
 
     //Porcentagem de lucro
     porcent_lucro.innerHTML = (Number(lucro_final[0].innerHTML.replace(',', '.')) / Number(total_apostado.innerHTML.replace(',', '.')) * 100).toFixed(2);
-    */
+    
 
 }
 
