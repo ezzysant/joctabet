@@ -13,30 +13,49 @@
   <main>
     <div class="table-main">
       <h1>Calculadora de Surebet</h1>
-      <div class="info-grid" style="--grid-cols: 6;">
-        <label for="surebet-entrada">ENTRADA</label>
-        <label for="surebet-procedimento">PROCEDIMENTO</label>
-        <label for="surebet-data">DATA</label>
-        <label for="surebet-backs">BACKS</label>
-        <label for="surebet-arred">ARRED</label>
-        <label></label>
-        <input type="number" id="surebet-entrada" placeholder="R$ 0,00" value="100">
-        <input type="text" id="surebet-procedimento" placeholder="Ex: Rollover">
-        <input type="date" id="surebet-data">
-        <select id="surebet-backs" onchange="amountRow()">
-          <option value="1">1</option>
-          <option value="2" selected>2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-        </select>
-        <select id="surebet-arred"">
-          <option value="1">1</option>
-        </select>
-        <button type="button" class="toggle-btn lay-toggle-btn" onclick="visibleAreaLay()">+ LAY</button>
+      <div class="info-grid" style="--grid-cols: 5;">
+        <div class="content-option">
+          <label for="surebet-entrada">ENTRADA</label>
+          <input type="number" id="surebet-entrada" placeholder="R$ 0,00" value="100">
+        </div>
+        <div class="content-option">
+          <label for="surebet-procedimento">PROCEDIMENTO</label>
+          <input type="text" id="surebet-procedimento" placeholder="Ex: Rollover">
+        </div>
+        <div class="content-option">
+          <label for="surebet-data">DATA</label>
+          <input type="date" id="surebet-data">
+        </div>
+        <div class="content-duble-option">
+          <div class="content-option">
+            <label for="surebet-backs">BACKS</label>
+            <select id="surebet-backs" onchange="amountRow()">
+              <option value="1">1</option>
+              <option value="2" selected>2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+            </select>
+          </div>
+          <div class="content-option">
+            <label for="surebet-arred">ARRED</label>
+            <select id="surebet-arred"">
+              <option value="1">0,00</option>
+              <option value="1">0,10</option>
+              <option value="1">0,50</option>
+              <option value="1">1,00</option>
+            </select>
+          </div>
+        </div>
+        <div class="content-option">
+          <label></label>
+          <button type="button" class="toggle-btn lay-toggle-btn" onclick="visibleAreaLay()">+ LAY</button>
+        </div>
       </div>
+
+
       <table>
         <tbody>
           <tr class="table-header">
@@ -49,64 +68,64 @@
           </tr>
           <tr class="line-back">
             <td>Back 1</td>
-            <td><input type="number" class="comission" placeholder="0,00">%</td>
-            <td><input type="number" class="odd" placeholder="0,00" value="3.6"></td>
+            <td><input type="number" class="comission" placeholder="0.00">%</td>
+            <td><input type="number" class="odd" placeholder="0.00" value="3.6"></td>
             <td>R$ <span class="apostar">-</span></td>
             <td>R$ <span class="lucro-bruto">-</span></td>
             <td>R$ <span class="lucro-final">-</span></td>
           </tr>
           <tr class="line-back">
             <td>Back 2</td>
-            <td><input type="number" class="comission" placeholder="0,00">%</td>
-            <td><input type="number" class="odd" placeholder="0,00"></td>
+            <td><input type="number" class="comission" placeholder="0.00">%</td>
+            <td><input type="number" class="odd" placeholder="0.00"></td>
             <td>R$ <span class="apostar">-</span></td>
             <td>R$ <span class="lucro-bruto">-</span></td>
             <td>R$ <span class="lucro-final">-</span></td>
           </tr>
           <tr class="line-back">
             <td>Back 3</td>
-            <td><input type="number" class="comission" placeholder="0,00">%</td>
-            <td><input type="number" class="odd" placeholder="0,00"></td>
+            <td><input type="number" class="comission" placeholder="0.00">%</td>
+            <td><input type="number" class="odd" placeholder="0.00"></td>
             <td>R$ <span class="apostar">-</span></td>
             <td>R$ <span class="lucro-bruto">-</span></td>
             <td>R$ <span class="lucro-final">-</span></td>
           </tr>
           <tr class="line-back">
             <td>Back 4</td>
-            <td><input type="number" class="comission" placeholder="0,00">%</td>
-            <td><input type="number" class="odd" placeholder="0,00"></td>
+            <td><input type="number" class="comission" placeholder="0.00">%</td>
+            <td><input type="number" class="odd" placeholder="0.00"></td>
             <td>R$ <span class="apostar">-</span></td>
             <td>R$ <span class="lucro-bruto">-</span></td>
             <td>R$ <span class="lucro-final">-</span></td>
           </tr>
           <tr class="line-back">
             <td>Back 5</td>
-            <td><input type="number" class="comission" placeholder="0,00">%</td>
-            <td><input type="number" class="odd" placeholder="0,00"></td>
+            <td><input type="number" class="comission" placeholder="0.00">%</td>
+            <td><input type="number" class="odd" placeholder="0.00"></td>
             <td>R$ <span class="apostar">-</span></td>
             <td>R$ <span class="lucro-bruto">-</span></td>
             <td>R$ <span class="lucro-final">-</span></td>
           </tr>
           <tr class="line-back">
             <td>Back 6</td>
-            <td><input type="number" class="comission" placeholder="0,00">%</td>
-            <td><input type="number" class="odd" placeholder="0,00"></td>
+            <td><input type="number" class="comission" placeholder="0.00">%</td>
+            <td><input type="number" class="odd" placeholder="0.00"></td>
             <td>R$ <span class="apostar">-</span></td>
             <td>R$ <span class="lucro-bruto">-</span></td>
             <td>R$ <span class="lucro-final">-</span></td>
           </tr>
           <tr class="line-back">
             <td>Back 7</td>
-            <td><input type="number" class="comission" placeholder="0,00">%</td>
-            <td><input type="number" class="odd" placeholder="0,00"></td>
+            <td><input type="number" class="comission" placeholder="0.00">%</td>
+            <td><input type="number" class="odd" placeholder="0.00"></td>
             <td>R$ <span class="apostar">-</span></td>
             <td>R$ <span class="lucro-bruto">-</span></td>
             <td>R$ <span class="lucro-final">-</span></td>
           </tr>
           <tr class="lay-row line-back">
             <td>Lay</td>
-            <td><input type="number" class="comission" placeholder="0,00">%</td>
-            <td><input type="number" class="odd" placeholder="0,00"></td>
+            <td><input type="number" class="comission" placeholder="0.00">%</td>
+            <td><input type="number" class="odd" placeholder="0.00"></td>
             <td>R$ <span class="apostar">-</span></td>
             <td>R$ <span class="lucro-bruto">-</span></td>
             <td>R$ <span class="lucro-final">-</span></td>
