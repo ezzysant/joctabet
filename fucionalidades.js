@@ -22,7 +22,7 @@ function visibleAreaLay() {
 //Função para visualizar/ocultar row 'backs' da tabela
 function amountRow() {
     let line_back = document.querySelectorAll('.line-back');
-    let _option = document.getElementById('surebet-backs')
+    let _option = document.getElementById('surebet-backs');
 
     //Visualizando todas as row
     for (let i = 0; i <= 6; i++) {
@@ -33,6 +33,59 @@ function amountRow() {
     for (let i = 6; i >= _option.value; i--) {
         line_back[i].style.display = 'none'
     }
+}
+
+//Calculando o total apostado
+function totalApostado(_apos, _tot){
+    //Total Apostado
+    for (let i = 0, total = 0; i <= 8; i++) {
+        if (i >= 8) {
+            _tot.innerHTML = String(total.toFixed(2).replace('.',','));
+            break;
+        }
+
+        let apostar_num = Number(_apos[i].innerHTML.replace(',','.'));
+
+        if(!Number.isNaN(apostar_num)){
+            let new_num = apostar_num;
+            total += new_num;
+        }
+    }
+}
+
+//Arredondar
+function arredondar(_option){
+
+    let apostar = document.querySelectorAll('.apostar');
+    let total_apostado = document.getElementById('total-apostado');
+
+    let arred = (_v, _arred)=>{
+        let new_value = _v.split(',');
+        new_value[1] = _arred
+        return new_value.join();
+    }
+
+    for(let i = 0; i < 7; i++){
+
+        if(Number.isNaN(Number(apostar[i].innerHTML.replace(',','.')))){
+            continue;
+        }
+
+        switch(_option){
+            case '1':
+                    apostar[i].innerHTML = arred(apostar[i].innerHTML, '10')
+                break;
+            case '2':
+                    apostar[i].innerHTML = arred(apostar[i].innerHTML, '50')
+                break;
+            case '3':
+                    apostar[i].innerHTML = String(Math.ceil(Number(apostar[i].innerHTML.replace(',','.')) + 0.01).toFixed(2)).replace('.',',')
+                break;
+                        
+        }
+    }
+    totalApostado(apostar, total_apostado)
+
 }
 
 //Função para calculo 01
@@ -48,6 +101,7 @@ function Calculate() {
     let porcent_lucro = document.getElementById('porcent-lucro');
     let stake_value = document.getElementById('stake-value');
     let resp_value = document.getElementById('resp-value');
+    let arred = document.getElementById('surebet-arred');
 
     //Sei lá, acho que fiz bruxaria pra funcionar
     for (let i = 0; i < 7; i++) {
@@ -74,6 +128,8 @@ function Calculate() {
         lucro_bruto[i].innerHTML = String(Math.round((apostar[i].innerHTML.replace(',','.')) * form_calc).toFixed(2)).replace('.',',');
     
     }
+
+    arredondar(arred.value);
     
     //Area LAY
     if (visible_lay) {
@@ -113,19 +169,7 @@ function Calculate() {
 
 
     //Total Apostado
-    for (let i = 0, total = 0; i <= 8; i++) {
-        if (i >= 8) {
-            total_apostado.innerHTML = String(total.toFixed(2).replace('.',','));
-            break;
-        }
-
-        let apostar_num = Number(apostar[i].innerHTML.replace(',','.'));
-
-        if(!Number.isNaN(apostar_num)){
-            let new_num = apostar_num;
-            total += new_num;
-        }
-    }
+    totalApostado(apostar, total_apostado)
     
 
     //Lucro Final
