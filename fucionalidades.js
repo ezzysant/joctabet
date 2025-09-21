@@ -96,9 +96,12 @@ function Calculate() {
         let form_calc = ((100 * odd_num - 100) + (100 * odd_num - 100) * comission_num + 100) / 100;
 
 
-        i==0?apostar[i].innerHTML = String(Number(entrada_value).toFixed(2)).replace('.',','):apostar[i].innerHTML = String(Number(Number(lucro_bruto[0].innerHTML.replace(',','.')) / form_calc).toFixed(2)).replace('.',',');
-
-        apostar[i].innerHTML = arredondar(Number(apostar[i].innerHTML.replace(',','.')));
+        if(i==0){
+                apostar[0].innerHTML = String(Number(entrada_value).toFixed(2)).replace('.',',')
+        }else{
+            apostar[i].innerHTML = String(Number(Number(lucro_bruto[0].innerHTML.replace(',','.')) / form_calc).toFixed(2)).replace('.',',');
+            apostar[i].innerHTML = arredondar(Number(apostar[i].innerHTML.replace(',','.')));
+        }
             
         lucro_bruto[i].innerHTML = String(Math.round((apostar[i].innerHTML.replace(',','.')) * form_calc).toFixed(2)).replace('.',',');
     
