@@ -35,6 +35,11 @@ function amountRow() {
     }
 }
 
+function startSiteWeb() {
+    amountRow();
+    visibleAreaLay();
+}
+
 //Arredondar
 function arredondar(_apost){
     let arred = document.getElementById('surebet-arred');
@@ -182,9 +187,4 @@ function Calculate() {
     porcent_lucro.innerHTML = (Number(lucro_final[0].innerHTML.replace(',', '.')) / Number(total_apostado.innerHTML.replace(',', '.')) * 100).toFixed(2);
     
 
-}
-
-function startSiteWeb() {
-    amountRow();
-    visibleAreaLay();
 }
