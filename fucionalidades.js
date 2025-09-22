@@ -52,7 +52,7 @@ function startSiteWeb() {
     visibleAreaLay();
 }
 
-function resetAll(){
+function resetAll(zerar_comiss_odd = true){
     stake_value.innerHTML = '-';
     resp_value.innerHTML = '-';
     total_apostado.innerHTML ='0,00';
@@ -60,11 +60,13 @@ function resetAll(){
     porcent_lucro.innerHTML = '0.00';
 
     for(let i = 0; i < 7;i++){
-        comission[i].value = '';
-        odd[i].value = '';
         apostar[i].innerHTML = '-';
         lucro_bruto[i].innerHTML = '-';
         lucro_final[i].innerHTML = '-';
+        if(zerar_comiss_odd){
+            comission[i].value = '';
+            odd[i].value = '';
+        }
     }
 }
 
@@ -117,7 +119,7 @@ function Calculate() {
         if(i==0){
                 apostar[0].innerHTML = String(Number(entrada.value).toFixed(2)).replace('.',',');
         }else if(lucro_bruto[0].innerHTML === '-'){
-            resetAll();
+            resetAll(false);
             return;
         }else{
             apostar[i].innerHTML = String(Number(Number(lucro_bruto[0].innerHTML.replace(',','.')) / form_calc).toFixed(2)).replace('.',',');
