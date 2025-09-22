@@ -1,4 +1,16 @@
 var visible_lay = false;
+let entrada = document.getElementById('surebet-entrada');
+let comission = document.querySelectorAll('.comission');
+let odd = document.querySelectorAll('.odd');
+let apostar = document.querySelectorAll('.apostar');
+let lucro_bruto = document.querySelectorAll('.lucro-bruto');
+let lucro_final = document.querySelectorAll('.lucro-final');
+let total_apostado = document.getElementById('total-apostado');
+let lucro = document.getElementById('lucro');
+let porcent_lucro = document.getElementById('porcent-lucro');
+let stake_value = document.getElementById('stake-value');
+let resp_value = document.getElementById('resp-value');
+
 
 //Função para visualisar opções Lay
 function visibleAreaLay() {
@@ -40,6 +52,22 @@ function startSiteWeb() {
     visibleAreaLay();
 }
 
+function resetAll(){
+    stake_value.innerHTML = '-';
+    resp_value.innerHTML = '-';
+    total_apostado.innerHTML ='0,00';
+    lucro.innerHTML = '0,00';
+    porcent_lucro.innerHTML = '0.00';
+
+    for(let i = 0; i < 7;i++){
+        comission[i].value = '';
+        odd[i].value = '';
+        apostar[i].innerHTML = '-';
+        lucro_bruto[i].innerHTML = '-';
+        lucro_final[i].innerHTML = '-';
+    }
+}
+
 //Arredondar
 function arredondar(_apost){
     let arred = document.getElementById('surebet-arred');
@@ -55,7 +83,7 @@ function arredondar(_apost){
             dec <= 0.5?new_num = inte + 0.5:new_num = inte + 1;
             break;
         case '3':
-            new_num = Math.ceil(_apost)
+            new_num = inte + 1;
             break;
         default :
             new_num = _apost;
@@ -68,19 +96,8 @@ function arredondar(_apost){
 
 //Função para calculo 01
 function Calculate() {
-    let entrada_value = Number(document.getElementById('surebet-entrada').value);
-    let comission = document.querySelectorAll('.comission');
-    let odd = document.querySelectorAll('.odd');
-    let apostar = document.querySelectorAll('.apostar');
-    let lucro_bruto = document.querySelectorAll('.lucro-bruto');
-    let lucro_final = document.querySelectorAll('.lucro-final');
-    let total_apostado = document.getElementById('total-apostado');
-    let lucro = document.getElementById('lucro');
-    let porcent_lucro = document.getElementById('porcent-lucro');
-    let stake_value = document.getElementById('stake-value');
-    let resp_value = document.getElementById('resp-value');
-
-    if(entrada_value < 0){window.alert('ERRO valores de entrada acima de R$ 1,00'); return}
+    if(Number(entrada.value) <= 0){window.alert('[ERRO] Valor de entrada menor que R$ 1,00'); return}
+    if(odd[0].value.length <= 0){window.alert('[ERRO] Valor de ODD vazio'); return}
 
     //Sei lá, acho que fiz bruxaria pra funcionar
     for (let i = 0; i < 7; i++) {
@@ -90,6 +107,7 @@ function Calculate() {
         if (odd_num === 0) {
             apostar[i].innerHTML = '-';
             lucro_bruto[i].innerHTML = '-'
+            lucro_final[i].innerHTML = '-'
             continue
         }
 
@@ -97,7 +115,10 @@ function Calculate() {
 
 
         if(i==0){
-                apostar[0].innerHTML = String(Number(entrada_value).toFixed(2)).replace('.',',')
+                apostar[0].innerHTML = String(Number(entrada.value).toFixed(2)).replace('.',',');
+        }else if(lucro_bruto[0].innerHTML === '-'){
+            resetAll();
+            return;
         }else{
             apostar[i].innerHTML = String(Number(Number(lucro_bruto[0].innerHTML.replace(',','.')) / form_calc).toFixed(2)).replace('.',',');
             apostar[i].innerHTML = arredondar(Number(apostar[i].innerHTML.replace(',','.')));
@@ -165,7 +186,7 @@ function Calculate() {
         let lucro_bruto_num = Number(lucro_bruto[i].innerHTML.replace(',', '.'));
         let total_apostado_num = Number(total_apostado.innerHTML.replace(',', '.'));
 
-        if(!Number.isNaN(lucro_bruto_num) &&  !Number.isNaN(total_apostado_num)){
+        if(lucro_bruto[i].innerHTML !== '-' &&  total_apostado.innerHTML !== '-'){
             lucro_final[i].innerHTML = String((lucro_bruto_num - total_apostado_num).toFixed(2)).replace('.',',');
         }
 
