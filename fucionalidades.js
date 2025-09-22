@@ -85,7 +85,7 @@ function arredondar(_apost){
             dec <= 0.5?new_num = inte + 0.5:new_num = inte + 1;
             break;
         case '3':
-            new_num = inte + 1;
+            dec > 0.00? new_num = inte + 1 : new_num = inte;
             break;
         default :
             new_num = _apost;
