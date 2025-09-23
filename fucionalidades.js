@@ -125,8 +125,12 @@ function Calculate() {
             apostar[i].innerHTML = String(Number(Number(lucro_bruto[0].innerHTML.replace(',','.')) / form_calc).toFixed(2)).replace('.',',');
             apostar[i].innerHTML = arredondar(Number(apostar[i].innerHTML.replace(',','.')));
         }
+
+        let apostar_num = Number(apostar[i].innerHTML.replace(',','.'))
             
-        lucro_bruto[i].innerHTML = String(Math.round((apostar[i].innerHTML.replace(',','.')) * form_calc).toFixed(2)).replace('.',',');
+        
+        lucro_bruto[i].innerHTML = String((Math.round((apostar_num * form_calc) * 10)/10).toFixed(2)).replace('.',',');
+        
     
     }
 
