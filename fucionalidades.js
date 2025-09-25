@@ -1,4 +1,4 @@
-var visible_lay = false;
+var visible_lay = true;
 let entrada = document.getElementById('surebet-entrada');
 let comission = document.querySelectorAll('.comission');
 let odd = document.querySelectorAll('.odd');
@@ -201,14 +201,14 @@ function Calculate() {
      
 
     //Lucro
-    for (let i = 0, menor = 0; i <= 8; i++) {
+    for (let i = 0, menor = null; i <= 8; i++) {
         if (i >= 8) {
             lucro.innerHTML = String(menor.toFixed(2)).replace('.',',');
             break;
         }
 
         let lucro_final_num = Number(lucro_final[i].innerHTML.replace(',', '.'));
-        if (menor > lucro_final_num && !Number.isNaN(lucro_final_num)) {
+        if ((menor === null || menor > lucro_final_num) && !Number.isNaN(lucro_final_num)) {
             menor = lucro_final_num;
         }
     }
